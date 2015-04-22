@@ -40,7 +40,8 @@ public class MainGUI {
     JPanel      panelGraficos;
     JLabel 		picLabel;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
       
     	
      String exp = "(((( 2 ^ 3 ) * 10)+5 - 27)/2/2 )*3";
@@ -65,10 +66,13 @@ public class MainGUI {
         }
 
     	
-        SwingUtilities.invokeLater(new Runnable() {
+        SwingUtilities.invokeLater(new Runnable() 
+        {
             @Override
-            public void run() {
-                try {
+            public void run() 
+            {
+                try 
+                {
                     UIManager.setLookAndFeel(UIManager
                             .getSystemLookAndFeelClassName());
                 } catch (Exception e) {
@@ -136,8 +140,7 @@ public class MainGUI {
                 double segundo = Double.parseDouble(stack.pop().replace(",", "."));
                 
                 double resultado = 0;
-                
-                
+                 
                 if (pedazo.equals("+"))
                 { resultado = primero + segundo; }
                 else if (pedazo.equals("-"))
@@ -260,7 +263,8 @@ public class MainGUI {
         JPanel prePanel = new JPanel(new BorderLayout());
 
         
-    	try {
+    	try 
+    	{
     		
     		logo = ImageIO.read(new File("logo.jpg"));
     		
@@ -270,7 +274,9 @@ public class MainGUI {
 
     	    System.out.println("Funco");
     
-    	} catch (IOException e) {
+    	} 
+    	catch (IOException e) 
+    	{
     		// TODO Auto-generated catch block
     		e.printStackTrace();
     		System.out.println("no abrio");
@@ -282,10 +288,9 @@ public class MainGUI {
         preFrame.setVisible(true);
         
     }
-    public Dimension getPreferredSize() {
-        return new Dimension(100, 100);
-    }
-    public void display() {
+
+    public void display()
+    {
     	JPanel panelCentral = new JPanel(new BorderLayout());
     	panelCentral.setBackground(Color.WHITE);
 
@@ -310,46 +315,63 @@ public class MainGUI {
         commandBox.setBackground(Color.GRAY);
 
         panelMensajes.add(new JScrollPane(commandBox), BorderLayout.WEST);
-
-
         southPanel.add(mensajeComando, BorderLayout.EAST);
         southPanel.add(enviarComando, BorderLayout.WEST);
         panelMensajes.add(southPanel,BorderLayout.SOUTH);
         JButton botonGrafico = new JButton();
 
-        try {
+        try 
+        {
             Image img = ImageIO.read(getClass().getResource("play.png"));
             botonGrafico.setIcon(new ImageIcon(img));
-          } catch (IOException ex) {
-          }
+        } catch (IOException ex) 
+        {
+		// TODO Auto-generated catch block
+		ex.printStackTrace();
+		System.out.println("no abrio");
+        }
 
         
       JButton boton1 = new JButton();
       
-      try {
+      try 
+      {
           Image img = ImageIO.read(getClass().getResource("archivo.png"));
           boton1.setIcon(new ImageIcon(img));
-        } catch (IOException ex) {
-        }
+      } 
+      catch (IOException ex) 
+      {
+  		// TODO Auto-generated catch block
+  		ex.printStackTrace();
+  		System.out.println("no abrio");
+      }
       
       JButton boton2 = new JButton();
      
-      try {
+      try 
+      {
           Image img = ImageIO.read(getClass().getResource("archivo.png"));
           boton2.setIcon(new ImageIcon(img));
-        } catch (IOException ex) {
-        }
+      } catch (IOException ex) 
+      {
+  		// TODO Auto-generated catch block
+  		ex.printStackTrace();
+  		System.out.println("no abrio");
+      }
       
       JButton boton3 = new JButton();
      
-      try {
+      try 
+      {
           Image img = ImageIO.read(getClass().getResource("archivo.png"));
           boton3.setIcon(new ImageIcon(img));
-        } catch (IOException ex) {
-        }
-     
-        
-        
+      } catch (IOException ex) 
+      {
+    		// TODO Auto-generated catch block
+    		ex.printStackTrace();
+    		System.out.println("no abrio");
+      }
+
         JPanel subPanel = new JPanel();
         subPanel.setBackground(Color.WHITE);
         subPanel.add(boton1);
@@ -359,48 +381,40 @@ public class MainGUI {
         //Now we simply add it to your main panel.
         panelCentral.add(subPanel, BorderLayout.CENTER);
 
-
         botonGrafico.addActionListener(new EntregarGrafico());
         panelGraficos.setBackground(Color.BLACK);
         panelCentral.getPreferredSize();
-//        JLabel prueba = new JLabel();
-//        prueba.setBackground(Color.WHITE);
-//        panelGraficos.add(prueba,BorderLayout.CENTER);
+
         JLabel logoppal = new JLabel(new ImageIcon(logo));
 
         logoppal.setBackground(Color.WHITE);
         panelCentral.add(logoppal,BorderLayout.NORTH);
         BufferedImage espacioGraficos;
-        try{ 
+        try
+        { 
         	espacioGraficos = ImageIO.read(new File("1.jpg"));
-        	JLabel espGraf = new JLabel (new ImageIcon(espacioGraficos.getSubimage(0, 0, 600, 1)));
-        	
-        	panelGraficos.add(espGraf, BorderLayout.NORTH);
-        
-	    System.out.println("Funco");
+        	JLabel espGraf = new JLabel (new ImageIcon(espacioGraficos.getSubimage(0, 0, 600, 1)));        	
+        	panelGraficos.add(espGraf, BorderLayout.NORTH);        
+        	System.out.println("Funco");
 	    
-	} catch (IOException e) {
+        } 
+        catch (IOException e) 
+        {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 		System.out.println("no abrio");
-	}
-        
-        //newFrame.add(panelGraficos);
+        }
+
         newFrame.add(BorderLayout.LINE_END,panelGraficos);
         panelCentral.add(botonGrafico,BorderLayout.SOUTH);
-        newFrame.add(panelCentral);
-
-       
-
-        
+        newFrame.add(panelCentral); 
         newFrame.add(panelMensajes, BorderLayout.BEFORE_LINE_BEGINS);
         newFrame.setDefaultCloseOperation(MenuExp.EXIT_ON_CLOSE);
-
         newFrame.setVisible(true);
-        
-        
+           
 		BufferedImage imagenWn;
-    	try {
+    	try 
+    	{
     		
     		imagenWn = ImageIO.read(new File("felipe.jpg"));
     		
@@ -410,7 +424,9 @@ public class MainGUI {
     	    picLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     	    System.out.println("Funco");
     
-    	} catch (IOException e) {
+    	} 
+    	catch (IOException e) 
+    	{
     		// TODO Auto-generated catch block
     		e.printStackTrace();
     		System.out.println("no abrio");
@@ -419,14 +435,19 @@ public class MainGUI {
     }
     
 
-    class EnviarComandoButtonListener implements ActionListener {
-        public void actionPerformed(ActionEvent event) {
-            if (mensajeComando.getText().length() < 1) {
-                // do nothing
-            } else if (mensajeComando.getText().equals(".clear")) {
+    class EnviarComandoButtonListener implements ActionListener 
+    {
+        public void actionPerformed(ActionEvent event) 
+        {
+            if (mensajeComando.getText().length() < 1) 
+            {
+                // hacer nada
+            } else if (mensajeComando.getText().equals(".clear")) 
+            {
                 commandBox.setText("Cleared all messages\n");
                 mensajeComando.setText("");
-            } else {
+            } else 
+            {
                 commandBox.append(lineaComando + mensajeComando.getText()
                         + "\n");
                 mensajeComando.setText("");
@@ -437,25 +458,30 @@ public class MainGUI {
 
     String  lineaComando;
 
-    class EntrarProgramaButtonListener implements ActionListener {
-        public void actionPerformed(ActionEvent event) {
+    class EntrarProgramaButtonListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent event) 
+        {
             
         	lineaComando="> ";
 
-            if (lineaComando.length() < 1) {
+            if (lineaComando.length() < 1)
+            {
                 System.out.println("IngreseComando");
-            } else {
+            } else 
+            {
                 preFrame.setVisible(false);
                 display();
             }
         }
 
     }
-    class EntregarGrafico implements ActionListener{
-    	public void actionPerformed(ActionEvent event){
+    class EntregarGrafico implements ActionListener
+    {
+    	public void actionPerformed(ActionEvent event)
+    	{
     		picLabel.setVisible(true);
     	}
     }
-    
-    
+       
 }
