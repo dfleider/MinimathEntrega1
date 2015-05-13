@@ -58,7 +58,7 @@ public class MainGUI {
             
             double resultadoFinal = evaluarRPN(output);
             
-            System.out.println("\n" + resultadoFinal);
+            System.out.println("\n" + resultadoFinal + "FELIPE EDITO ESTO");
         }
         else
         {
