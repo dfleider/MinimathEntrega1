@@ -44,7 +44,7 @@ public class MainGUI {
     {
       
     	
-     String exp = "(2+3+1)*5";
+     String exp = "(2+3+1)*5/2";
         
         
         if (verificadorParentesis(exp))
