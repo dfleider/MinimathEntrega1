@@ -1,3 +1,5 @@
+package frontendPackage;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -23,8 +25,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import java.util.ArrayList;
 import java.util.Stack;
-import java.util.regex.*;
-import java.util.*;
+//import java.util.regex.*;
+//import java.util.*;
 
 
 public class MainGUI {
