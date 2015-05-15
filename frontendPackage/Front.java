@@ -229,7 +229,7 @@ public class Front {
                 commandBox.setText("Cleared all messages\n");
                 mensajeComando.setText("");
             } else {
-                commandBox.append(lineaComando + mensajeComando.getText()
+                commandBox.append(mensajeComando.getText()
                         + "\n");
                 
                // Aqui est‡ el string que hay que enviar al backend
