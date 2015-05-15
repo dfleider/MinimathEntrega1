@@ -4,13 +4,10 @@ package backendPackage;
 
 public class BackendMain {
 	
-	public static void main()
+	public static String main(String exp)
 	{
-		
-
-		String exp = "1+3";
-
-	    
+		//if(exp.startsWith(var))
+    
 	    if (VerificadorParentesis.verificaParentesis(exp))
 	    {
 	        String[] expresion = Separador.separar(exp); 
@@ -23,10 +20,12 @@ public class BackendMain {
 	        double resultadoFinal = EvaluarRPN.evaluarRPN(output);
 	        
 	        System.out.println("\n" + resultadoFinal);
+	        return ""+resultadoFinal;
 	    }
 	    else
 	    {
 	        System.out.println("Expresion no tiene misma cantidad de parentesis izquierdos y derechos");
+	        return "";
 	    }
 	}
 	

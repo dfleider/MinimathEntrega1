@@ -42,10 +42,7 @@ public class MainGUI {
 
     public static void main(String[] args) {
     	
-    	
-      BackendMain.main();
-    	
-    	
+
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -245,10 +242,18 @@ public class MainGUI {
             } else {
                 commandBox.append(lineaComando + mensajeComando.getText()
                         + "\n");
+                
+               // Aqui est‡ el string que hay que enviar al backend
+                System.out.println(mensajeComando.getText());              
+                commandBox.append(BackendMain.main(mensajeComando.getText())+ "\n");
+                //Aqui est‡ el string que hay que enviar al backend
+                
                 mensajeComando.setText("");
             }
+            
             mensajeComando.requestFocusInWindow();
         }
+    
     }
 
     String  lineaComando;
