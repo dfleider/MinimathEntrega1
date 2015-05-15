@@ -35,7 +35,6 @@ public class Front {
     JTextField  mensajeComando;
     JTextArea   commandBox;
     JTextField  usernameChooser;
-   // MenuExp     preFrame;
     JPanel      panelGraficos;
     JLabel 		picLabel;
 
@@ -56,65 +55,11 @@ public class Front {
                 
             }
         });
-    }
-
-
-    
+    } 
     BufferedImage logo;
-//    public void preDisplay() {
-//        newFrame.setVisible(false);
-//        //newFrame.setResizable(false);
-//        newFrame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-//
-//        preFrame = new MenuExp();
-//        preFrame.setSize(300, 300);
-//        JButton enterServer = new JButton("Ingresar a MiniMath");
-//        enterServer.addActionListener(new EntrarProgramaButtonListener());
-//        JPanel prePanel = new JPanel(new BorderLayout());
-//
-//        
-//    	try {
-//    		
-//    		logo = ImageIO.read(new File("logo.jpg"));
-//    		
-//    	    JLabel picLogo = new JLabel(new ImageIcon(logo));
-//
-//    	    prePanel.add(picLogo,BorderLayout.CENTER);
-//
-//    	    System.out.println("Funco");
-//    
-//    	} catch (IOException e) {
-//    		// TODO Auto-generated catch block
-//    		e.printStackTrace();
-//    		System.out.println("no abrio");
-//    	}
-//
-//        preFrame.add(BorderLayout.CENTER, prePanel);
-//        preFrame.add(BorderLayout.SOUTH, enterServer);
-//       
-//        preFrame.setVisible(true);
-//        
-//    }
-//    public Dimension getPreferredSize() {
-//        return new Dimension(100, 100);
-//    }
+
     public void display() {
-//    	try {
-//    		
-//    		//logo = ImageIO.read(new File("logo.jpg"));
-//    		
-//    	    //JLabel picLogo = new JLabel(new ImageIcon(logo));
-//
-//    	    
-//
-//    	    System.out.println("Funco");
-//    
-//    	} catch (IOException e) {
-//    		// TODO Auto-generated catch block
-//    		e.printStackTrace();
-//    		System.out.println("no abrio");
-//    	}
-    	//preFrame.setVisible(true);
+
     	newFrame.setSize(800, 600);
     	JPanel panelCentral = new JPanel(new BorderLayout());
     	panelCentral.setBackground(Color.WHITE);
@@ -164,13 +109,7 @@ public class Front {
         botonGrafico.addActionListener(new EntregarGrafico());
         panelGraficos.setBackground(Color.BLACK);
         panelCentral.getPreferredSize();
-//        JLabel prueba = new JLabel();
-//        prueba.setBackground(Color.WHITE);
-//        panelGraficos.add(prueba,BorderLayout.CENTER);
-        //JLabel picLogo = new JLabel(new ImageIcon(logo));
-//
-//        picLogo.setBackground(Color.WHITE);
-//        panelCentral.add(picLogo,BorderLayout.NORTH);
+
         BufferedImage espacioGraficos;
         try{ 
         	espacioGraficos = ImageIO.read(new File("play.jpg"));
@@ -190,13 +129,8 @@ public class Front {
         newFrame.getContentPane().add(BorderLayout.LINE_END,panelGraficos);
         panelCentral.add(botonGrafico,BorderLayout.SOUTH);
         newFrame.getContentPane().add(panelCentral);
-
-       
-
-        
         newFrame.getContentPane().add(panelMensajes, BorderLayout.BEFORE_LINE_BEGINS);
         newFrame.setDefaultCloseOperation(MenuExp.EXIT_ON_CLOSE);
-
         newFrame.setVisible(true);
         
         
@@ -218,8 +152,6 @@ public class Front {
     	}
  
     }
-    
-
     class EnviarComandoButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent event) {
             if (mensajeComando.getText().length() < 1) {
