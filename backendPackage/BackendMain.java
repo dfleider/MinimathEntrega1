@@ -7,7 +7,9 @@ public class BackendMain {
 	public static void main()
 	{
 		
-		String exp = "( 2 ^ 3 )";
+
+		String exp = "1+3";
+
 	    
 	    if (VerificadorParentesis.verificaParentesis(exp))
 	    {

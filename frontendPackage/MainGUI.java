@@ -27,13 +27,6 @@ import javax.swing.UIManager;
 
 import backendPackage.BackendMain;
 
-//import backendPackage.VerificadorParentesis;
-//import java.util.ArrayList;
-//import java.util.Stack;
-//import java.util.regex.*;
-//import java.util.*;
-
-
 public class MainGUI {
 
     String      appName     = "MiniMath";
