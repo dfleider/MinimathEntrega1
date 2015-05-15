@@ -12,9 +12,9 @@ public class BackendMain {
 		if(exp.startsWith("var"))
 		{			
 			String nombreVariable = exp.substring(3,exp.indexOf("=")).trim();
-			//System.out.print("->"+nombreVariable);
+			System.out.print("->"+nombreVariable);
 			String valorVariable=exp.substring(exp.indexOf("=")+1).trim();
-			//System.out.print("->"+valorVariable);
+			System.out.print("->"+valorVariable);
 			variables.almacena(nombreVariable,valorVariable);
 			return "";
 		}
