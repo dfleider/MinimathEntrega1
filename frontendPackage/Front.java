@@ -95,9 +95,9 @@ public class Front {
 //        preFrame.setVisible(true);
 //        
 //    }
-    public Dimension getPreferredSize() {
-        return new Dimension(100, 100);
-    }
+//    public Dimension getPreferredSize() {
+//        return new Dimension(100, 100);
+//    }
     public void display() {
 //    	try {
 //    		
@@ -120,7 +120,7 @@ public class Front {
     	panelCentral.setBackground(Color.WHITE);
 
         JPanel panelMensajes = new JPanel(new BorderLayout());
-        panelGraficos = new JPanel(new BorderLayout());
+        JPanel panelGraficos = new JPanel(new BorderLayout());
 
         JPanel southPanel = new JPanel(new BorderLayout());
         southPanel.setBackground(Color.GRAY);
@@ -176,7 +176,7 @@ public class Front {
         	espacioGraficos = ImageIO.read(new File("play.jpg"));
         	JLabel espGraf = new JLabel (new ImageIcon(espacioGraficos.getSubimage(0, 0, 600, 1)));
         	
-        	panelGraficos.add(espGraf, BorderLayout.NORTH);
+        	panelCentral.add(espGraf, BorderLayout.SOUTH);
         
 	    System.out.println("Funco");
 	    
@@ -207,7 +207,7 @@ public class Front {
     		
     	    picLabel = new JLabel(new ImageIcon(imagenWn.getSubimage(300, 100, 500, 500)));
     	    picLabel.setVisible(false);
-    	    panelGraficos.add(picLabel,BorderLayout.CENTER);
+    	    panelCentral.add(picLabel,BorderLayout.NORTH);
     	    picLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     	    System.out.println("Funco");
     
