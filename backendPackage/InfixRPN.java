@@ -6,6 +6,7 @@ import java.util.Stack;
 public class InfixRPN {
 
 	
+	
     public static String[] infixRPN(String[] pedazos) //Basado en http://www.technical-recipes.com/2011/a-mathematical-expression-parser-in-java-and-cpp/
     {
         ArrayList<String> out = new ArrayList<String>();
