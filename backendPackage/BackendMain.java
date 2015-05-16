@@ -6,9 +6,10 @@ public class BackendMain {
 	
 	public static Variables variables;
 	
+	
 	public static String main(String exp)
 	{
-		// Detecto si el string es una delcaraci—n de variables
+		// Detecto si el string es una delcaraciï¿½n de variables
 		if(exp.startsWith("var"))
 		{			
 			String nombreVariable = exp.substring(3,exp.indexOf("=")).trim();
