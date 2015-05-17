@@ -4,11 +4,11 @@ package backendPackage;
 
 public class BackendMain {
 	
-	public static Variables variables;
-	
+	//public static Variables variables;
+	static Evaluador evaluador = new Evaluador();
 	
 	public static String main(String exp)
-	{
+	{		
 		// Detecto si el string es una delcaraci�n de variables
 		if(exp.startsWith("var"))
 		{			
@@ -16,7 +16,8 @@ public class BackendMain {
 			System.out.print("->"+nombreVariable);
 			String valorVariable=exp.substring(exp.indexOf("=")+1).trim();
 			System.out.print("->"+valorVariable);
-			variables.almacena(nombreVariable,valorVariable);
+			//variables.almacena(nombreVariable,valorVariable);
+			evaluador.agregarVariable(nombreVariable, valorVariable);
 			return "";
 		}
 		
@@ -24,6 +25,15 @@ public class BackendMain {
 		{
 		    if (VerificadorParentesis.verificaParentesis(exp))
 		    {
+		    	Convertidor con = new Convertidor(exp);
+		    	evaluador.entregarRPN(con.pedazos);
+		    	evaluador.variablesANumeros();
+		    	
+		    	double resultado = evaluador.evaluarRPN();
+		        System.out.println("\n ANS: " + resultado);
+		    	
+		        return ""+resultado;
+		    	/*
 		        String[] expresion = Separador.separar(exp); 
 		        String[] output = InfixRPN.infixRPN(expresion);
 		        
@@ -35,6 +45,7 @@ public class BackendMain {
 		        
 		        System.out.println("\n" + resultadoFinal);
 		        return ""+resultadoFinal;
+		        */
 		    }
 		    else
 		    {
@@ -42,8 +53,6 @@ public class BackendMain {
 		        return "";
 		    }
 		}
-    
-
 	}
 	
 }

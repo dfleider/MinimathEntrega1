@@ -8,12 +8,17 @@ public class Evaluador {
 	Operadores op;
 	public ArrayList<String[]> variables; //variables[0] = nombre, variables[1] = valor
 	
-	public Evaluador(String[] arregloRPN)
+	public Evaluador()
 	{
 		op = new Operadores();
 		variables = new ArrayList<String[]>();
-		this.aEvaluar = arregloRPN;
+		//this.aEvaluar = arregloRPN;
 		//variablesANumeros();
+	}
+	
+	public void entregarRPN(String[] arregloRPN)
+	{
+		this.aEvaluar = arregloRPN;
 	}
 	
 	public double evaluarRPN() // Basado en http://www.technical-recipes.com/2011/a-mathematical-expression-parser-in-java-and-cpp/
