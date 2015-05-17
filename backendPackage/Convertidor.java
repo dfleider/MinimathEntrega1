@@ -5,14 +5,21 @@ import java.util.Stack;
 
 public class Convertidor {
 	public String[] pedazos;
+	public String[] funcion;
+	public String nombreFunc;
 	public String expresion;
 	
 	Operadores op;
 	
-	public Convertidor(String input)
+	public Convertidor(String input, int tipo) //1 = expresion normal. 2 = funcion nueva
 	{
 		op = new Operadores();
 		this.expresion = input;
+		
+		if (tipo == 2)
+		{
+			declararFuncion();
+		}
 		
 		separador();
 		infixRPN();
@@ -98,5 +105,11 @@ public class Convertidor {
 	    this.pedazos = out.toArray(output);  
 	}
 	
+	private void declararFuncion()	//Expresion llega como fun f(x) -> x + 5
+	{
+		expresion = expresion.replace(" ", "");
+		this.nombreFunc = expresion.substring(3, expresion.indexOf("("));
+		this.expresion = expresion.substring(expresion.indexOf("=")+1);	//deja expresion solo como funcion en si
+	}
 
 }
