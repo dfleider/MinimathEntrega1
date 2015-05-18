@@ -1,3 +1,5 @@
+package frontendPackage;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -5,7 +7,12 @@ import javax.swing.*;
 
 public class MenuExp extends JFrame {
     
-    public MenuExp() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public MenuExp() {
         
         //setTitle("Menu Example");
         setSize(0, 0);
