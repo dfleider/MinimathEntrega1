@@ -242,6 +242,8 @@ public class Evaluador {
 	
 	public double evaluarFuncion(String nombre, String valorVariable)
 	{
+		//Revisa que funcion existe
+		
 		int i = 0;
 		boolean existe = false;
 		
@@ -255,27 +257,32 @@ public class Evaluador {
 			i++;
 		}
 		
-		if(existe)
+		//Revisar que valorVariable sea numero o variable. Si es variable, reemplazar
+		if(op.esVariable(valorVariable))
 		{
-			int k = 1;
+			//procesar variable
+			String[] var = procesarVariable(valorVariable);
+			int b = 0;
+			while (b<this.variables.size())
+			{
+				if (var[0].equals(this.variables.get(b)[0]))
+				{
+					valorVariable = Double.parseDouble(var[1]) * Double.parseDouble(this.variables.get(b)[1]) + "";
+					break;
+				}
+			}
+		}
 			
+		if(existe)	//Evaluar
+		{
+			int k = 0;
 			
-			String[] funcionOriginal = new String[this.funciones.get(i).length];
+			String[] funcionOriginal = new String[this.funciones.get(i).length];	//Copia en variable auxiliar funcion original
 			for(int a = 0; a < funcionOriginal.length; a++)
 			{
 				funcionOriginal[a] = this.funciones.get(i)[a];
 			}
 			
-			while(k<this.funciones.get(i).length)	// cambio todas las variables a numeros
-			{
-				if(op.esVariable(this.funciones.get(i)[k]))
-				{
-					String[] aux = this.funciones.get(i);
-					aux[k] = procesarVariable(aux[k], valorVariable);
-					this.funciones.set(i, aux);
-				}
-				k++;
-			}
 			String[] aEvaluarNuevo = new String[this.funciones.get(i).length-1];
 			int z = 0;
 			while (z < aEvaluarNuevo.length)
@@ -283,8 +290,19 @@ public class Evaluador {
 				aEvaluarNuevo[z] = this.funciones.get(i)[z+1];
 				z++;
 			}
-			this.aEvaluar = aEvaluarNuevo;
-			this.funciones.set(i, funcionOriginal);
+			this.aEvaluar = aEvaluarNuevo;	//En aEvaluar esta la funcion sin el nombre, solo la expresion
+			variablesANumeros();	//Todas las variables declaradas las convierte a numeros
+			
+			while(k<this.aEvaluar.length)	// cambio todas las variables de la funcion a numeros
+			{
+				if(op.esVariable(this.aEvaluar[k]))
+				{
+					aEvaluar[k] = procesarVariable(aEvaluar[k], valorVariable);
+				}
+				k++;
+			}
+
+			this.funciones.set(i, funcionOriginal);	//Dejo la funcion como antes
 			return evaluarRPN();
 		}
 		else
