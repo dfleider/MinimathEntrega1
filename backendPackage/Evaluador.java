@@ -51,26 +51,29 @@ public class Evaluador {
 				else if(pedazo.equals("^"))
 				{resultado = Math.pow(segundo, primero);}
 				
-				/*
-				switch(pedazo)
+				stack.push(String.valueOf(resultado));
+			}
+			else if(op.esFuncionEspecial(pedazo))
+			{
+				double preimagen = Double.parseDouble(stack.pop().replace(",","."));
+				
+				double resultado = 0;
+				if(pedazo.equals("sin"))
 				{
-					case "+":
-						resultado = primero + segundo;
-						break;
-					case "-":
-						resultado = segundo - primero;
-						break;
-					case "*":
-						resultado = primero * segundo;
-						break;
-					case "/":
-						resultado = segundo / primero;
-						break;
-					case "^":
-						resultado = Math.pow(segundo, primero);
-						break;
+					resultado = Math.sin(preimagen);
 				}
-				*/
+				else if(pedazo.equals("cos"))
+				{
+					resultado = Math.cos(preimagen);
+				}
+				else if(pedazo.equals("tan"))
+				{
+					resultado = Math.tan(preimagen);
+				}
+				else if(pedazo.equals("exp"))
+				{
+					resultado = Math.exp(preimagen);
+				}
 				
 				stack.push(String.valueOf(resultado));
 			}

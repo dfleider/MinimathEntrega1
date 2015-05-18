@@ -88,7 +88,7 @@ public class Convertidor {
 				stack.pop();
 			}
 			
-			else if(op.esOperador(pedazo))// operador
+			else if(op.esOperador(pedazo) || op.esFuncionEspecial(pedazo))// operador o funcion
 			{
                 while (!stack.empty() && op.esOperador(stack.peek()))   
                 {                      
