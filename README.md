@@ -2,7 +2,11 @@
 
 README
 
-Funciones soportadas:suma,resta,multipliacion,division,potencia,seno,coseno,tangente
+Funciones soportadas:suma,resta,multipliacion,division,potencia,seno,coseno,tangente,exponencial
+exponencial = exp
+seno = sin
+coseno = cos
+tangente = tan
 
 Programa soporta: Operaciones matematicas directas
                   Creacion de funciones
