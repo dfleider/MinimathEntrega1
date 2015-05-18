@@ -63,7 +63,7 @@ public class BackendMain {
 		    else
 		    {
 		        System.out.println("Expresion no tiene misma cantidad de parentesis izquierdos y derechos");
-		        return "";
+		        return "EXPRESION CON INCORRECTOS ()";
 		    }
 		}
 	}

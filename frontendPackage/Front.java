@@ -83,7 +83,7 @@ public class Front {
       
         commandBox.setLineWrap(true);
         commandBox.setSize(300, 500);
-        commandBox.setBackground(Color.GRAY);
+        commandBox.setBackground(Color.WHITE);
 
         panelMensajes.add(new JScrollPane(commandBox), BorderLayout.WEST);
 
@@ -94,8 +94,10 @@ public class Front {
         JButton botonGrafico = new JButton();
 
         try {
-            Image img = ImageIO.read(getClass().getResource("play.png"));
+           Image img = ImageIO.read(getClass().getResource("play.png"));
+           botonGrafico.setSize(15, 15);
             botonGrafico.setIcon(new ImageIcon(img));
+            
           } catch (IOException ex) 
           {
           }  
@@ -110,22 +112,6 @@ public class Front {
         panelGraficos.setBackground(Color.BLACK);
         panelCentral.getPreferredSize();
 
-        BufferedImage espacioGraficos;
-        try{ 
-        	espacioGraficos = ImageIO.read(new File("play.jpg"));
-        	JLabel espGraf = new JLabel (new ImageIcon(espacioGraficos.getSubimage(0, 0, 600, 1)));
-        	
-        	panelCentral.add(espGraf, BorderLayout.SOUTH);
-        
-	    System.out.println("Funco");
-	    
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-		System.out.println("no abrio");
-	}
-        
-        //newFrame.add(panelGraficos);
         newFrame.getContentPane().add(BorderLayout.LINE_END,panelGraficos);
         panelCentral.add(botonGrafico,BorderLayout.SOUTH);
         newFrame.getContentPane().add(panelCentral);
@@ -161,16 +147,14 @@ public class Front {
                 mensajeComando.setText("");
             } else {
                 commandBox.append(mensajeComando.getText()
-                        + "\n");
-                
+                        + "\n");               
                // Aqui est‡ el string que hay que enviar al backend
                 System.out.println(mensajeComando.getText());              
-                commandBox.append(BackendMain.main(mensajeComando.getText())+ "\n");
+                commandBox.append("> "+BackendMain.main(mensajeComando.getText())+ "\n");
                 //Aqui est‡ el string que hay que enviar al backend
                 
                 mensajeComando.setText("");
-            }
-            
+            }     
             mensajeComando.requestFocusInWindow();
         }  
     }
