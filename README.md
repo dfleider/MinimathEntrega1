@@ -19,4 +19,6 @@ Programa soporta: Operaciones matematicas directas
   El programa permite: 
               - Evaluar variables directamente, ejemplo -> 2a+3
               - Evaluar variables en funciones, ejemplo -> f(a)
+              
+Se debe tener consideracion siempre en el uso correcto de parentesis y ademas que el programa no multiplica por default, es decir, se debe utilizar el signo de multiplicacion en todo caso, el programa no resuelve correctamente al ingresar por ejemplo 2(3+4), en este caso, debe ir 2*(3+4).
   
