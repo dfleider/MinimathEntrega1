@@ -27,6 +27,9 @@ public class Evaluador {
 	{
 		Stack<String> stack = new Stack<String>();
 		
+		try{
+			
+		
 		for (String pedazo : this.aEvaluar)
 		{
 			if (op.esNumero(pedazo))
@@ -78,7 +81,13 @@ public class Evaluador {
 				stack.push(String.valueOf(resultado));
 			}
 		}
+		
 		return Double.parseDouble(stack.pop());
+		}
+		catch(Exception ex){
+			stack.clear();
+			return 0.00000001; //representa un error de ingreso
+		}
 	}
 	
 	public boolean agregarVariable(String nombre, String valor)
@@ -211,11 +220,11 @@ public class Evaluador {
 			this.funciones.add(funcion);	//agrega
 		}
 	}
-	
+	String nombreVariable="";	
 	public String procesarVariable(String variable, String valor) 	//por ejemplo, separa 2x en 2 y x
 	{
 		int i = 0;
-		String nombreVariable="";
+
 		String cantidadVariable="";
 		
 		while(i < variable.length())

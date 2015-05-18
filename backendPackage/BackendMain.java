@@ -32,7 +32,9 @@ public class BackendMain {
 			String valorVar = exp.substring(exp.indexOf("(")+1, exp.indexOf(")"));
 			double resultado = evaluador.evaluarFuncion(nombreFuncion, valorVar);
 			System.out.print("\n ANS: " + resultado);
+			if (resultado == 0.00000001) return "Funcion mal evaluada";
 			return "" + resultado;
+			
 		}
 		else
 		{
@@ -44,7 +46,8 @@ public class BackendMain {
 		    	
 		    	double resultado = evaluador.evaluarRPN();
 		        System.out.println("\n ANS: " + resultado);
-		    	
+		    	if(resultado == 0.00000001)
+		    		return "Expresion con error";
 		        return ""+resultado;
 		    	/*
 		        String[] expresion = Separador.separar(exp); 
@@ -63,7 +66,7 @@ public class BackendMain {
 		    else
 		    {
 		        System.out.println("Expresion no tiene misma cantidad de parentesis izquierdos y derechos");
-		        return "EXPRESION CON INCORRECTOS ()";
+		        return "Expresion con incorrectos ()";
 		    }
 		}
 	}
