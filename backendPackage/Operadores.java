@@ -25,7 +25,7 @@ public class Operadores {
 	
 	public boolean esFuncionEspecial(String numero)
 	{
-		if (numero.equals("sin") || numero.equals("cos") || numero.equals("tan"))
+		if (numero.equals("sin") || numero.equals("cos") || numero.equals("tan") || numero.equals("exp"))
 		{return true;}
 		else
 		{return false;}

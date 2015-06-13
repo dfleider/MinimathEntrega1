@@ -75,20 +75,24 @@ public class Convertidor {
 			{
 				out.add(pedazo);
 			}
-			else if(pedazo.equals("("))	//parentesis izquierdo
+			else if(pedazo.equals("(") || op.esFuncionEspecial(pedazo))	//parentesis izquierdo
 			{
 				stack.push(pedazo);
 			}
 			else if(pedazo.equals(")"))	//parentesis derecho
 			{
-				while(!stack.empty() && !stack.peek().equals("("))
+				while(!stack.empty() && (!stack.peek().equals("(") || !op.esFuncionEspecial(stack.peek())))
 				{
+					if(stack.peek().equals("("))	//para ordenar bien funciones especiales
+					{ stack.pop();
+						continue;}
 					out.add(stack.pop());
 				}
+				if(!stack.empty())
 				stack.pop();
 			}
 			
-			else if(op.esOperador(pedazo) || op.esFuncionEspecial(pedazo))// operador o funcion
+			else if(op.esOperador(pedazo))// operador o funcion
 			{
                 while (!stack.empty() && op.esOperador(stack.peek()))   
                 {                      
