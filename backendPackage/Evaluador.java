@@ -2,18 +2,21 @@ package backendPackage;
 
 import java.util.ArrayList;
 import java.util.Stack;
+import org.apache.commons.math3.analysis.polynomials.*;
 
 public class Evaluador {
 	String[] aEvaluar;
 	Operadores op;
 	public ArrayList<String[]> variables; //variables[0] = nombre, variables[1] = valor
 	public ArrayList<String[]> funciones;
+	public ArrayList<Polinomio> polinomios;
 	
 	public Evaluador()
 	{
 		op = new Operadores();
 		variables = new ArrayList<String[]>();
 		funciones = new ArrayList<String[]>();
+		polinomios = new ArrayList<Polinomio>();
 		//this.aEvaluar = arregloRPN;
 		//variablesANumeros();
 	}
@@ -190,6 +193,39 @@ public class Evaluador {
 	      } 
 	}
 	
+	public void agregarPolinomio(String nombre, double[] coef)
+	{	
+		int i=0;
+		boolean existe = false;
+		while(i < polinomios.size())
+		{
+			if (nombre.equals(polinomios.get(i).nombre))
+			{
+				existe = true;
+				break;
+			}
+			i++;
+		}
+		
+		if(!existe)
+		{
+			Polinomio p = new Polinomio(coef, nombre);
+			this.polinomios.add(p);
+		} else
+		{
+			Polinomio p = new Polinomio(coef, nombre);
+			this.polinomios.set(i, p);
+		}
+	}
+	
+	public String ultimoPolinomio()
+	{
+		String P = polinomios.get(polinomios.size()-1).imprimir();
+		return P;
+	}
+	
+	
+	
 	public void agregarFuncion(String[] pedazos, String nombreFuncion)
 	{
 		String[] funcion = new String[pedazos.length + 1];
@@ -321,6 +357,71 @@ public class Evaluador {
 		{	
 			System.out.print("Funcion pedida no existe");
 			return 0;
+		}
+	}
+	
+	public double evaluarPolinomio(String nombre, double valor)
+	{
+		double resultado = -0.000000001;
+		
+		for(Polinomio p: polinomios)
+		{
+			if (p.nombre.equals(nombre))
+			{	
+				resultado = p.poli.value(valor);
+				break;
+			}
+		}
+		
+		return resultado;
+	}
+	
+	public String operarPolinomios(String nombre1, String nombre2, String operador)
+	{
+		boolean exs1 = false;
+		boolean exs2 = false;
+		
+		int p1=0;
+		int p2=0;
+		int i = 0;
+		
+		double[] a = {5,4};
+		
+		PolynomialFunction p3 = new PolynomialFunction(a);
+		
+		while(i<polinomios.size())
+		{
+			if(nombre1.equals(polinomios.get(i).nombre))
+			{
+				p1 = i;
+				exs1 = true;
+			}
+			if(nombre2.equals(polinomios.get(i).nombre))
+			{
+				p2 = i;
+				exs2 = true;
+			}
+			i++;
+		}
+		
+		if (exs1 && exs2)
+		{
+			if (operador.equals("+"))
+			{
+				p3 = polinomios.get(p1).poli.add(polinomios.get(p2).poli);
+			}
+			else if (operador.equals("-"))
+			{
+				p3 = polinomios.get(p1).poli.subtract(polinomios.get(p2).poli);
+			}
+			else if (operador.equals("*"))
+			{
+				p3 = polinomios.get(p1).poli.multiply(polinomios.get(p2).poli);
+			}
+			return p3.toString();
+		} else
+		{
+			return "no existen ambos polinomios pedidos";
 		}
 	}
 }
