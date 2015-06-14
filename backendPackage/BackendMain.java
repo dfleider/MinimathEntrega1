@@ -34,7 +34,7 @@ public class BackendMain {
 			double resultado = evaluador.evaluarFuncion(nombreFuncion, valorVar);
 			System.out.print("\n ANS: " + resultado);
 			if (resultado == 0.00000001) return "Funcion mal evaluada";
-			return "" + resultado;
+			else return String.valueOf(resultado);
 			
 		}
 		else if (exp.startsWith("pol"))

@@ -10,7 +10,13 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptEngine;
+import javax.script.ScriptException;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -24,6 +30,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 import backendPackage.BackendMain;
+import backendPackage.Evaluador;
 
 public class Front {
 
@@ -56,7 +63,7 @@ public class Front {
         });
     } 
     BufferedImage logo;
-
+    JButton botonGrafico;
     public void display() {
 
     	newFrame.setSize(800, 600);
@@ -90,29 +97,30 @@ public class Front {
         southPanel.add(mensajeComando, BorderLayout.EAST);
         southPanel.add(enviarComando, BorderLayout.WEST);
         panelMensajes.add(southPanel,BorderLayout.SOUTH);
-        JButton botonGrafico = new JButton();
+        botonGrafico = new JButton("Graficar");
+        botonGrafico.setVisible(false);
+        southPanel.add(botonGrafico, BorderLayout.CENTER);
+        botonGrafico.setSize(15, 15);
+        //botonGrafico.setIcon(new ImageIcon(img));
+        
+        
+                botonGrafico.addActionListener(new EntregarGrafico());
 
-        try {
-           Image img = ImageIO.read(getClass().getResource("play.png"));
-           botonGrafico.setSize(15, 15);
-            botonGrafico.setIcon(new ImageIcon(img));
-            
-          } catch (IOException ex) 
-          {
-          }  
+//        try {
+//           Image img = ImageIO.read(getClass().getResource("play.png"));
+//            
+//          } catch (IOException ex) 
+//          {
+//          }  
         
         JPanel subPanel = new JPanel();
         subPanel.setBackground(Color.WHITE);
         
         panelCentral.add(subPanel, BorderLayout.CENTER);
-
-
-        botonGrafico.addActionListener(new EntregarGrafico());
         panelGraficos.setBackground(Color.BLACK);
         panelCentral.getPreferredSize();
 
         newFrame.getContentPane().add(BorderLayout.LINE_END,panelGraficos);
-        panelCentral.add(botonGrafico,BorderLayout.SOUTH);
         newFrame.getContentPane().add(panelCentral);
         newFrame.getContentPane().add(panelMensajes, BorderLayout.BEFORE_LINE_BEGINS);
         newFrame.setDefaultCloseOperation(MenuExp.EXIT_ON_CLOSE);
@@ -137,6 +145,10 @@ public class Front {
     	}
  
     }
+    
+//    ScriptEngineManager mgr = new ScriptEngineManager();
+//    ScriptEngine engine = mgr.getEngineByName("JavaScript");
+//    String foo;
     class EnviarComandoButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent event) {
             if (mensajeComando.getText().length() < 1) {
@@ -150,9 +162,14 @@ public class Front {
                // Aqui est‡ el string que hay que enviar al backend
                 System.out.println(mensajeComando.getText());              
                 commandBox.append("> "+BackendMain.main(mensajeComando.getText())+ "\n");
+                if(mensajeComando.getText().startsWith("fun")){
+                	botonGrafico.setVisible(true);
+            		System.out.println(mensajeComando.getText()+"----------");
+
+                }
                 //Aqui est‡ el string que hay que enviar al backend
                 
-                mensajeComando.setText("");
+                //mensajeComando.setText("");
             }     
             mensajeComando.requestFocusInWindow();
         }  
@@ -161,7 +178,27 @@ public class Front {
 
     class EntregarGrafico implements ActionListener{
     	public void actionPerformed(ActionEvent event){
-    		picLabel.setVisible(true);
+    		//picLabel.setVisible(true);//AQUI DEBO CREAR EL GRAFICO E IMPLEMENTARLO
+//    		String funcionGraficada = mensajeComando.getText().substring(9);
+//    		System.out.println(funcionGraficada);
+    		double y;
+            Graph grafico = new Graph(10,10);
+            
+            for ( double x = 0; x<=10; x+=0.01 )
+            {    
+            	
+            	//Evaluador e = new Evaluador();
+            	//String todo = mensajeComando.getText();
+            	//BackendMain.main(todo);
+
+            	y=Double.parseDouble(BackendMain.main("eval f("+String.valueOf(x)+")"));
+            	//a.main(todo);
+//    			String nombreFuncion = todo.substring(5, todo.indexOf("("));
+//    			String valorVar = todo.substring(todo.indexOf("(")+1, todo.indexOf(")"));
+//    			double resultado = e.evaluarFuncion(nombreFuncion, valorVar);
+    			
+                grafico.drawPoint(x,y);
+            }
     	}
     }   
 }
