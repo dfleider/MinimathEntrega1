@@ -33,7 +33,7 @@ public class BackendMain {
 			String valorVar = exp.substring(exp.indexOf("(")+1, exp.indexOf(")"));
 			double resultado = evaluador.evaluarFuncion(nombreFuncion, valorVar);
 			System.out.print("\n ANS: " + resultado);
-			if (resultado == 0.00000001) return "Funcion mal evaluada";
+			if (resultado == 0.00000000000239444882931) return "Funcion mal evaluada";
 			else return String.valueOf(resultado);
 			
 		}

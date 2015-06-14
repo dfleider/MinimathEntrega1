@@ -89,7 +89,7 @@ public class Evaluador {
 		}
 		catch(Exception ex){
 			stack.clear();
-			return 0.00000001; //representa un error de ingreso
+			return 0.00000000000239444882931; //representa un error de ingreso
 		}
 	}
 	
