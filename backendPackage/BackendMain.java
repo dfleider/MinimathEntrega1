@@ -1,10 +1,7 @@
 package backendPackage;
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> development
 public class BackendMain {
 	
 	//public static Variables variables;
@@ -12,26 +9,19 @@ public class BackendMain {
 	
 	public static String main(String exp)
 	{		
-<<<<<<< HEAD
+
 		// Detecto si el string es una delcaraci�n de variables
-		if(exp.startsWith("var"))
-		{			
-			String nombreVariable = exp.substring(3,exp.indexOf("=")).trim();
-			//System.out.print("->"+nombreVariable);
-			String valorVariable=exp.substring(exp.indexOf("=")+1).trim();
-			//System.out.print("->"+valorVariable);
-			//variables.almacena(nombreVariable,valorVariable);
-=======
-		
-		// Detecto si el string es una declaracion de variables
+
 		if(exp.startsWith("var"))
 		{			
 			String nombreVariable = exp.substring(3,exp.indexOf("=")).trim();
 			String valorVariable=exp.substring(exp.indexOf("=")+1).trim();
->>>>>>> development
 			evaluador.agregarVariable(nombreVariable, valorVariable);
 			return "";
 		}
+		
+		
+
 		else if(exp.startsWith("fun"))
 		{
 			Convertidor con = new Convertidor(exp,2);
@@ -43,14 +33,6 @@ public class BackendMain {
 			String nombreFuncion = exp.substring(5, exp.indexOf("("));
 			String valorVar = exp.substring(exp.indexOf("(")+1, exp.indexOf(")"));
 			double resultado = evaluador.evaluarFuncion(nombreFuncion, valorVar);
-<<<<<<< HEAD
-			System.out.print("\n ANS: " + resultado);
-			if (resultado == 0.00000001) return "Funcion mal evaluada";
-			return "" + resultado;
-			
-		}
-=======
-			//System.out.print("\n ANS: " + resultado);
 			if (resultado == 0.00000000000239444882931) return "Funcion mal evaluada";
 			else return String.valueOf(resultado);
 			
@@ -110,7 +92,7 @@ public class BackendMain {
 						+ " p + q";
 			}
 		}
->>>>>>> development
+
 		else
 		{
 		    if (VerificadorParentesis.verificaParentesis(exp))
@@ -120,27 +102,11 @@ public class BackendMain {
 		    	evaluador.variablesANumeros();
 		    	
 		    	double resultado = evaluador.evaluarRPN();
-<<<<<<< HEAD
-		        System.out.println("\n ANS: " + resultado);
-=======
-		        //System.out.println("\n ANS: " + resultado);
->>>>>>> development
+
 		    	if(resultado == 0.00000001)
 		    		return "Expresion con error";
 		        return ""+resultado;
-		    	/*
-		        String[] expresion = Separador.separar(exp); 
-		        String[] output = InfixRPN.infixRPN(expresion);
-		        
-		        for (String token : output) {  
-		            System.out.print(token + " ");  
-		        }  
-		        
-		        double resultadoFinal = EvaluarRPN.evaluarRPN(output);
-		        
-		        System.out.println("\n" + resultadoFinal);
-		        return ""+resultadoFinal;
-		        */
+
 		    }
 		    else
 		    {
@@ -149,5 +115,6 @@ public class BackendMain {
 		    }
 		}
 	}
-	
 }
+	
+
