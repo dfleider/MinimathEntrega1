@@ -33,7 +33,7 @@ public class Graph extends JPanel
         h = 500;
          
         drawBounds();
-        gBuf.setColor( Color.GREEN );
+        gBuf.setColor( Color.RED );
     }
      
     public void drawBounds()

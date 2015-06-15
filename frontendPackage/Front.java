@@ -44,14 +44,15 @@ public class Front {
                 Front Front = new Front();
                 Front.display();
                 
+                
             }
         });
     } 
-    BufferedImage logo;
     JButton botonGrafico;
     public void display() {
 
     	newFrame.setSize(820, 600);
+    	newFrame.setTitle(appName);
     	panelCentral = new JPanel(new BorderLayout());
     	panelCentral.setBackground(Color.WHITE);
 
@@ -95,19 +96,10 @@ public class Front {
         newFrame.getContentPane().add(panelCentral);
         newFrame.getContentPane().add(panelMensajes, BorderLayout.BEFORE_LINE_BEGINS);
         newFrame.setDefaultCloseOperation(MenuExp.EXIT_ON_CLOSE);
-        newFrame.setVisible(true);
-           		    		
-//    	    panelCentral.add(picLabel,BorderLayout.NORTH);
-//    	    picLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-//    	    System.out.println("Funco");
-    
-    	
+        newFrame.setVisible(true);    	
  
     }
     
-//    ScriptEngineManager mgr = new ScriptEngineManager();
-//    ScriptEngine engine = mgr.getEngineByName("JavaScript");
-//    String foo;
     class EnviarComandoButtonListener implements ActionListener {
 
         public void actionPerformed(ActionEvent event) {
@@ -117,7 +109,6 @@ public class Front {
             } else if (mensajeComando.getText().equals(".clear")) { //borro todo el contenido
                 commandBox.setText("Cleared all messages\n");
                 mensajeComando.setText("");
-                //grafico = new Graph(10,10, panelCentral);
             } else {
                 commandBox.append(mensajeComando.getText()
                         + "\n");               
@@ -143,7 +134,7 @@ public class Front {
     		double y;
             grafico = new Graph(10,10, panelCentral);
             
-            for ( double x =0; x<=10; x+=0.01 )
+            for ( double x =0; x<=10; x+=0.01 )//aqui se grafica 
             {    
             	try{
             	y=Double.parseDouble(BackendMain.main("eval f("+String.valueOf(x)+")"));			

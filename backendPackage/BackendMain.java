@@ -1,7 +1,6 @@
 package backendPackage;
 
 
-
 public class BackendMain {
 	
 	//public static Variables variables;
@@ -10,14 +9,11 @@ public class BackendMain {
 	public static String main(String exp)
 	{		
 		
-		// Detecto si el string es una delcaraci�n de variables
+		// Detecto si el string es una declaracion de variables
 		if(exp.startsWith("var"))
 		{			
 			String nombreVariable = exp.substring(3,exp.indexOf("=")).trim();
-			//System.out.print("->"+nombreVariable);
 			String valorVariable=exp.substring(exp.indexOf("=")+1).trim();
-			//System.out.print("->"+valorVariable);
-			//variables.almacena(nombreVariable,valorVariable);
 			evaluador.agregarVariable(nombreVariable, valorVariable);
 			return "";
 		}
@@ -32,7 +28,7 @@ public class BackendMain {
 			String nombreFuncion = exp.substring(5, exp.indexOf("("));
 			String valorVar = exp.substring(exp.indexOf("(")+1, exp.indexOf(")"));
 			double resultado = evaluador.evaluarFuncion(nombreFuncion, valorVar);
-			System.out.print("\n ANS: " + resultado);
+			//System.out.print("\n ANS: " + resultado);
 			if (resultado == 0.00000000000239444882931) return "Funcion mal evaluada";
 			else return String.valueOf(resultado);
 			
@@ -101,7 +97,7 @@ public class BackendMain {
 		    	evaluador.variablesANumeros();
 		    	
 		    	double resultado = evaluador.evaluarRPN();
-		        System.out.println("\n ANS: " + resultado);
+		        //System.out.println("\n ANS: " + resultado);
 		    	if(resultado == 0.00000001)
 		    		return "Expresion con error";
 		        return ""+resultado;
