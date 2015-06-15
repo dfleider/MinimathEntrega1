@@ -15,10 +15,18 @@ public class Graph extends JPanel
     {
     	panel = j;
         if ( canvas == null )
-        {
-            //panel.setSize(800,600);
- 
+        { 
             canvas = new GraphPaperCanvas(null);
+            panel.add(canvas);
+            panel.setVisible(true);
+ 
+            vm = canvas.createImage(800,600);
+            gBuf = vm.getGraphics();
+            canvas.setVm(vm); 
+        }
+        if (canvas != null){
+        	panel.removeAll();
+        	canvas = new GraphPaperCanvas(null);
             panel.add(canvas);
             panel.setVisible(true);
  
@@ -70,6 +78,7 @@ public class Graph extends JPanel
         gBuf.drawLine( x+(int)px, y+(int)py, x+(int)px, y+(int)py );
         canvas.repaint();
     }
+
 }
 class GraphPaperCanvas extends Canvas
 {

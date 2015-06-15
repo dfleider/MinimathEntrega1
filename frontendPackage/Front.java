@@ -109,6 +109,8 @@ public class Front {
             else if (mensajeComando.getText().equals(".clear")) { //borro todo el contenido
                 commandBox.setText("Cleared all messages\n");
                 mensajeComando.setText("");
+                //grafico.renovarGrafico();
+                
                 
             }
             else {
