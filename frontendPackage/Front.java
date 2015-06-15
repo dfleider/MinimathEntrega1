@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,7 +17,7 @@ import backendPackage.BackendMain;
 public class Front {
 
     String      appName     = "MiniMath";
-    Front     Front;
+    Front     	Front;
     MenuExp     newFrame    = new MenuExp();
     JButton     enviarComando;
     JTextField  mensajeComando;
@@ -106,10 +105,13 @@ public class Front {
         	botonGrafico.setVisible(false);
             if (mensajeComando.getText().length() < 1) {
                 // do nothing
-            } else if (mensajeComando.getText().equals(".clear")) { //borro todo el contenido
+            } 
+            else if (mensajeComando.getText().equals(".clear")) { //borro todo el contenido
                 commandBox.setText("Cleared all messages\n");
                 mensajeComando.setText("");
-            } else {
+                
+            }
+            else {
                 commandBox.append(mensajeComando.getText()
                         + "\n");               
                // Aqui est‡ el string que hay que enviar al backend
