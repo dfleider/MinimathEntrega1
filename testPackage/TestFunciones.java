@@ -111,6 +111,22 @@ public class TestFunciones {
 
 	
 	}
+<<<<<<< HEAD
+=======
+				@Test
+				public void testPolinomios(){
+			
+				BackendMain b = new BackendMain();
+			
+				b.main("pol ( p1,0,1,1)") ; // p1= x^2 + x
+				b.main("pol ( p2,1,2,1)") ; // p1= x^2 + 2x + 1
+				String resultado=b.main("peval p1(2)");
+				assertEquals("6.0",resultado);
+				String resultado2=b.main("pop(p1,p2,+)");
+				assertEquals("2x^2+3x+1",resultado2);
+
+	}
+>>>>>>> development
 	
 	
 			

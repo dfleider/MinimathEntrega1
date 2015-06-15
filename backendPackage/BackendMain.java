@@ -1,7 +1,10 @@
 package backendPackage;
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> development
 public class BackendMain {
 	
 	//public static Variables variables;
@@ -9,6 +12,7 @@ public class BackendMain {
 	
 	public static String main(String exp)
 	{		
+<<<<<<< HEAD
 		// Detecto si el string es una delcaraci�n de variables
 		if(exp.startsWith("var"))
 		{			
@@ -17,6 +21,14 @@ public class BackendMain {
 			String valorVariable=exp.substring(exp.indexOf("=")+1).trim();
 			//System.out.print("->"+valorVariable);
 			//variables.almacena(nombreVariable,valorVariable);
+=======
+		
+		// Detecto si el string es una declaracion de variables
+		if(exp.startsWith("var"))
+		{			
+			String nombreVariable = exp.substring(3,exp.indexOf("=")).trim();
+			String valorVariable=exp.substring(exp.indexOf("=")+1).trim();
+>>>>>>> development
 			evaluador.agregarVariable(nombreVariable, valorVariable);
 			return "";
 		}
@@ -31,11 +43,74 @@ public class BackendMain {
 			String nombreFuncion = exp.substring(5, exp.indexOf("("));
 			String valorVar = exp.substring(exp.indexOf("(")+1, exp.indexOf(")"));
 			double resultado = evaluador.evaluarFuncion(nombreFuncion, valorVar);
+<<<<<<< HEAD
 			System.out.print("\n ANS: " + resultado);
 			if (resultado == 0.00000001) return "Funcion mal evaluada";
 			return "" + resultado;
 			
 		}
+=======
+			//System.out.print("\n ANS: " + resultado);
+			if (resultado == 0.00000000000239444882931) return "Funcion mal evaluada";
+			else return String.valueOf(resultado);
+			
+		}
+		else if (exp.startsWith("pol"))
+		{
+			String poli = exp.substring(exp.indexOf("(")+1, exp.length()-1);
+			poli.replace(" ","");
+			String[] cofs = poli.split(",");
+			double[] coefsD = new double[cofs.length-1];
+			
+			try
+			{
+				for(int i=1; i<cofs.length;i++)
+				{
+					coefsD[i-1] = Double.parseDouble(cofs[i]);
+				}
+				evaluador.agregarPolinomio(cofs[0], coefsD);
+				return evaluador.ultimoPolinomio();
+			}
+			catch (Exception e)
+			{
+				return "polinomio mal entregado. Forma correcta es:"
+						+ " pol (a,-b,c...) para a - b*x + c*x^2...";
+			}
+		}
+		else if (exp.startsWith("peval"))
+		{
+			try
+			{
+				exp.replace(" ", "");
+				String nombre = exp.substring(exp.indexOf("(") + 1, exp.indexOf(","));
+				String valorS = exp.substring(exp.indexOf(",") + 1, exp.indexOf(")"));
+
+				double valor = Double.parseDouble(valorS);
+				return "" + evaluador.evaluarPolinomio(nombre, valor);
+			}
+			catch (Exception e)
+			{
+				return "función peval mal usada. Forma es: peval (p, 5) para evaluar polinomio p con valor 5";
+			}
+		}
+		else if (exp.startsWith("pop"))
+		{
+			try
+			{
+				exp.replace(" ","");
+				String n1 = exp.substring(exp.indexOf("(") + 1, exp.indexOf(","));
+				String n2 = exp.substring(exp.indexOf(",") + 1, exp.indexOf(",", exp.indexOf(",") + 1));
+				String operador = exp.substring(exp.indexOf(",", exp.indexOf(",") + 1) + 1, exp.indexOf(")"));
+		
+				return evaluador.operarPolinomios(n1, n2, operador);
+			}
+			catch (Exception e)
+			{
+				return "pop mal utilizado. Forma correcta es pop (p,q,+) para hacer"
+						+ " p + q";
+			}
+		}
+>>>>>>> development
 		else
 		{
 		    if (VerificadorParentesis.verificaParentesis(exp))
@@ -45,7 +120,11 @@ public class BackendMain {
 		    	evaluador.variablesANumeros();
 		    	
 		    	double resultado = evaluador.evaluarRPN();
+<<<<<<< HEAD
 		        System.out.println("\n ANS: " + resultado);
+=======
+		        //System.out.println("\n ANS: " + resultado);
+>>>>>>> development
 		    	if(resultado == 0.00000001)
 		    		return "Expresion con error";
 		        return ""+resultado;
