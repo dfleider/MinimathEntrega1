@@ -16,21 +16,21 @@ public class Graph extends JPanel
     	panel = j;
         if ( canvas == null )
         {
-            panel.setSize(340,370);
+            //panel.setSize(800,600);
  
             canvas = new GraphPaperCanvas(null);
             panel.add(canvas);
             panel.setVisible(true);
  
-            vm = canvas.createImage(1100,950);
+            vm = canvas.createImage(800,600);
             gBuf = vm.getGraphics();
             canvas.setVm(vm); 
         }
  
         this.x = x;
         this.y = y;
-        w = 300;
-        h = 300;
+        w = 500;
+        h = 500;
          
         drawBounds();
         gBuf.setColor( Color.GREEN );

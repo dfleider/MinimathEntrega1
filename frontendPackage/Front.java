@@ -27,7 +27,7 @@ public class Front {
     JPanel      panelGraficos;
     JLabel 		picLabel;
     JPanel 		panelCentral;
-    Graph grafico;
+    Graph 		grafico;
 
     public static void main(String[] args) {
     	
@@ -51,21 +51,12 @@ public class Front {
     JButton botonGrafico;
     public void display() {
 
-    	newFrame.setSize(800, 600);
+    	newFrame.setSize(820, 600);
     	panelCentral = new JPanel(new BorderLayout());
     	panelCentral.setBackground(Color.WHITE);
 
         JPanel panelMensajes = new JPanel(new BorderLayout());
         JPanel panelGraficos = new JPanel(new BorderLayout());
-
-        JPanel southPanel = new JPanel(new BorderLayout());
-        southPanel.setBackground(Color.GRAY);
-                
-        mensajeComando = new JTextField(10);
-        mensajeComando.requestFocusInWindow();
-
-        enviarComando = new JButton("Send Command");
-        enviarComando.addActionListener(new EnviarComandoButtonListener());
 
         commandBox = new JTextArea();
         commandBox.setTabSize(6);
@@ -77,19 +68,28 @@ public class Front {
         commandBox.setBackground(Color.WHITE);
 
         panelMensajes.add(new JScrollPane(commandBox), BorderLayout.WEST);
-
-
-        southPanel.add(mensajeComando, BorderLayout.EAST);
-        southPanel.add(enviarComando, BorderLayout.WEST);
-        panelMensajes.add(southPanel,BorderLayout.SOUTH);
-        botonGrafico = new JButton("Graficar");
-        botonGrafico.setVisible(false);
-        southPanel.add(botonGrafico, BorderLayout.CENTER);
-        botonGrafico.setSize(15, 15);
-        
-                botonGrafico.addActionListener(new EntregarGrafico());
         panelGraficos.setBackground(Color.BLACK);
         panelCentral.getPreferredSize();
+        
+                JPanel southPanel = new JPanel(new BorderLayout());
+                newFrame.getContentPane().add(southPanel, BorderLayout.SOUTH);
+                southPanel.setBackground(Color.GRAY);
+                
+        mensajeComando = new JTextField(10);
+        mensajeComando.requestFocusInWindow();
+        
+                enviarComando = new JButton("Send Command");
+                enviarComando.addActionListener(new EnviarComandoButtonListener());
+                
+                
+                        southPanel.add(mensajeComando, BorderLayout.CENTER);
+                        southPanel.add(enviarComando, BorderLayout.WEST);
+                        botonGrafico = new JButton("Graficar");
+                        botonGrafico.setVisible(false);
+                        southPanel.add(botonGrafico, BorderLayout.EAST);
+                        botonGrafico.setSize(15, 15);
+                        
+                                botonGrafico.addActionListener(new EntregarGrafico());
 
         newFrame.getContentPane().add(BorderLayout.LINE_END,panelGraficos);
         newFrame.getContentPane().add(panelCentral);

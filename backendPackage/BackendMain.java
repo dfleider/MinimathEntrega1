@@ -1,6 +1,6 @@
 package backendPackage;
 
-import org.apache.commons.math3.analysis.polynomials.*;
+
 
 public class BackendMain {
 	
