@@ -2,21 +2,30 @@ package backendPackage;
 
 import java.util.ArrayList;
 import java.util.Stack;
+<<<<<<< HEAD
+=======
 import org.apache.commons.math3.analysis.polynomials.*;
+>>>>>>> development
 
 public class Evaluador {
 	String[] aEvaluar;
 	Operadores op;
 	public ArrayList<String[]> variables; //variables[0] = nombre, variables[1] = valor
 	public ArrayList<String[]> funciones;
+<<<<<<< HEAD
+=======
 	public ArrayList<Polinomio> polinomios;
+>>>>>>> development
 	
 	public Evaluador()
 	{
 		op = new Operadores();
 		variables = new ArrayList<String[]>();
 		funciones = new ArrayList<String[]>();
+<<<<<<< HEAD
+=======
 		polinomios = new ArrayList<Polinomio>();
+>>>>>>> development
 		//this.aEvaluar = arregloRPN;
 		//variablesANumeros();
 	}
@@ -89,7 +98,11 @@ public class Evaluador {
 		}
 		catch(Exception ex){
 			stack.clear();
+<<<<<<< HEAD
+			return 0.00000001; //representa un error de ingreso
+=======
 			return 0.00000000000239444882931; //representa un error de ingreso
+>>>>>>> development
 		}
 	}
 	
@@ -193,6 +206,8 @@ public class Evaluador {
 	      } 
 	}
 	
+<<<<<<< HEAD
+=======
 	public void agregarPolinomio(String nombre, double[] coef)
 	{	
 		int i=0;
@@ -226,6 +241,7 @@ public class Evaluador {
 	
 	
 	
+>>>>>>> development
 	public void agregarFuncion(String[] pedazos, String nombreFuncion)
 	{
 		String[] funcion = new String[pedazos.length + 1];
@@ -359,6 +375,8 @@ public class Evaluador {
 			return 0;
 		}
 	}
+<<<<<<< HEAD
+=======
 	
 	public double evaluarPolinomio(String nombre, double valor)
 	{
@@ -424,4 +442,5 @@ public class Evaluador {
 			return "no existen ambos polinomios pedidos";
 		}
 	}
+>>>>>>> development
 }

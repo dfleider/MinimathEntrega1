@@ -111,6 +111,8 @@ public class TestFunciones {
 
 	
 	}
+<<<<<<< HEAD
+=======
 				@Test
 				public void testPolinomios(){
 			
@@ -124,6 +126,7 @@ public class TestFunciones {
 				assertEquals("2x^2+3x+1",resultado2);
 
 	}
+>>>>>>> development
 	
 	
 			
