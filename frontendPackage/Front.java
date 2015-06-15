@@ -26,6 +26,8 @@ public class Front {
     JTextField  usernameChooser;
     JPanel      panelGraficos;
     JLabel 		picLabel;
+    JPanel 		panelCentral;
+    Graph grafico;
 
     public static void main(String[] args) {
     	
@@ -50,7 +52,7 @@ public class Front {
     public void display() {
 
     	newFrame.setSize(800, 600);
-    	JPanel panelCentral = new JPanel(new BorderLayout());
+    	panelCentral = new JPanel(new BorderLayout());
     	panelCentral.setBackground(Color.WHITE);
 
         JPanel panelMensajes = new JPanel(new BorderLayout());
@@ -86,11 +88,6 @@ public class Front {
         botonGrafico.setSize(15, 15);
         
                 botonGrafico.addActionListener(new EntregarGrafico());
-        
-        JPanel subPanel = new JPanel();
-        subPanel.setBackground(Color.WHITE);
-        
-        panelCentral.add(subPanel, BorderLayout.CENTER);
         panelGraficos.setBackground(Color.BLACK);
         panelCentral.getPreferredSize();
 
@@ -117,9 +114,10 @@ public class Front {
         	botonGrafico.setVisible(false);
             if (mensajeComando.getText().length() < 1) {
                 // do nothing
-            } else if (mensajeComando.getText().equals(".clear")) {
+            } else if (mensajeComando.getText().equals(".clear")) { //borro todo el contenido
                 commandBox.setText("Cleared all messages\n");
                 mensajeComando.setText("");
+                //grafico = new Graph(10,10, panelCentral);
             } else {
                 commandBox.append(mensajeComando.getText()
                         + "\n");               
@@ -142,11 +140,9 @@ public class Front {
     class EntregarGrafico implements ActionListener{
     	public void actionPerformed(ActionEvent event){
     		//picLabel.setVisible(true);//AQUI DEBO CREAR EL GRAFICO E IMPLEMENTARLO
-//    		String funcionGraficada = mensajeComando.getText().substring(9);
-//    		System.out.println(funcionGraficada);
     		double y;
-            Graph grafico = new Graph(10,10);
-            //panelCentral.add()
+            grafico = new Graph(10,10, panelCentral);
+            
             for ( double x =0; x<=10; x+=0.01 )
             {    
             	try{
@@ -155,13 +151,14 @@ public class Front {
             	}
             	catch(Exception e){}
             }
-            for ( double x =-10; x<=0; x+=0.01 )
+            for ( double x =-10; x<0; x+=0.01 )
             {    
             	try{
             	y=Double.parseDouble(BackendMain.main("eval f("+String.valueOf(x)+")"));
                 grafico.drawPoint(x,y);
             	}
             	catch(Exception e){}
+            	panelCentral.updateUI(); //actualizo el grafico
             }
     	}
     }   

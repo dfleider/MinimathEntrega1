@@ -1,34 +1,30 @@
 package frontendPackage;
-import javax.swing.JFrame;
 import java.awt.*;
 import java.awt.Color;
+import javax.swing.JPanel;
  
- 
-public final class Graph extends JFrame
+public class Graph extends JPanel
 {
-    private static Graphics gBuf = null;
+    public static Graphics gBuf = null;
     private static GraphPaperCanvas canvas = null;
     private static Image vm = null;
     private int x, y;
     private int w, h;
-     
-    public Graph( int x, int y )
+    public JPanel panel;
+    public Graph( int x, int y, JPanel j )
     {
+    	panel = j;
         if ( canvas == null )
         {
-            setTitle("Sine Curve");
-            setSize(340,370);
-            setLocation(20,50);
+            panel.setSize(340,370);
  
             canvas = new GraphPaperCanvas(null);
-            getContentPane().add(canvas);
-            setVisible(true);
+            panel.add(canvas);
+            panel.setVisible(true);
  
             vm = canvas.createImage(1100,950);
             gBuf = vm.getGraphics();
-            canvas.setVm(vm);
- 
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            canvas.setVm(vm); 
         }
  
         this.x = x;
